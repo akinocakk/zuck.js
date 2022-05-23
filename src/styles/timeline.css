@@ -1,3 +1,4 @@
+/* zuck.js - https://github.com/ramon82/zuck.js - MIT License */
 .stories.carousel {
   white-space: nowrap;
   overflow: auto;
@@ -5,15 +6,20 @@
   overflow-scrolling: touch;
 }
 .stories.carousel::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
+  width: 0;
+  background: 0 0;
+}
+.stories.carousel .story > a > .img > *,
+.stories.list .story > a > .img > * {
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
 }
 .stories.carousel .story {
   display: inline-block;
   width: 18vw;
   max-width: 90px;
   margin: 0 6px;
-  vertical-align: top;
 }
 .stories.carousel .story:first-child {
   margin-left: 0;
@@ -21,15 +27,14 @@
 .stories.carousel .story:last-child {
   margin-right: 0;
 }
-
-.stories.carousel .story > .item-link {
+.stories.carousel .story > a {
   text-align: center;
   display: block;
 }
-.stories.carousel .story > .item-link:active > .item-preview {
+.stories.carousel .story > a:active > .img {
   transform: scale(0.9);
 }
-.stories.carousel .story > .item-link > .item-preview {
+.stories.carousel .story > a > .img {
   display: block;
   box-sizing: border-box;
   font-size: 0;
@@ -38,16 +43,12 @@
   overflow: hidden;
   transition: transform 0.2s;
 }
-.stories.carousel .story > .item-link > .item-preview img {
+.stories.carousel .story > a > .img > * {
   display: block;
-  box-sizing: border-box;
   height: 100%;
   width: 100%;
-  background-size: cover;
-  background-position: center;
-  object-fit: cover;
 }
-.stories.carousel .story > .item-link > .info {
+.stories.carousel .story > a > .info {
   display: inline-block;
   margin-top: 0.5em;
   line-height: 1.2em;
@@ -55,16 +56,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.stories.carousel .story > .item-link > .info .name {
+.stories.carousel .story > a > .info strong {
   font-weight: 300;
 }
-.stories.carousel .story > .item-link > .info .time {
+.stories.carousel .story > .items,
+.stories.carousel .story > a > .info .time {
   display: none;
 }
-.stories.carousel .story > .items {
-  display: none;
-}
-
 .stories.list {
   white-space: nowrap;
   overflow: auto;
@@ -75,12 +73,11 @@
   margin: 6px;
   padding-bottom: 6px;
 }
-
-.stories.list .story > .item-link {
+.stories.list .story > a {
   text-align: left;
   display: block;
 }
-.stories.list .story > .item-link > .item-preview {
+.stories.list .story > a > .img {
   height: 42px;
   width: 42px;
   max-width: 42px;
@@ -91,47 +88,25 @@
   font-size: 0;
   overflow: hidden;
 }
-.stories.list .story > .item-link > .item-preview img {
+.stories.list .story > a > .img > * {
   display: block;
-  box-sizing: border-box;
   height: 100%;
   width: 100%;
-  background-size: cover;
-  background-position: center;
 }
-.stories.list .story > .item-link > .info {
+.stories.list .story > a > .info {
   display: inline-block;
   line-height: 1.6em;
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: top;
 }
-.stories.list .story > .item-link > .info .name {
+.stories.list .story > a > .info strong {
   font-weight: 500;
   display: block;
 }
-.stories.list .story > .item-link > .info .time {
+.stories.list .story > a > .info .time {
   display: inline-block;
 }
 .stories.list .story > .items {
   display: none;
-}
-
-.stories.rtl {
-  direction: rtl;
-}
-.stories.rtl.carousel .story:first-child {
-  margin-left: auto;
-  margin-right: 0;
-}
-.stories.rtl.carousel .story:last-child {
-  margin-right: auto;
-  margin-left: 0;
-}
-.stories.rtl.list .story > .item-link {
-  text-align: right;
-}
-.stories.rtl.list .story > .item-link > .item-preview {
-  margin-right: auto;
-  margin-left: 12px;
 }
