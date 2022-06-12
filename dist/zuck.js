@@ -1,15 +1,107 @@
-'use strict';
+var Zuck =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+var __WEBPACK_AMD_DEFINE_RESULT__;
 /*
     zuck.js
     https://github.com/ramon82/zuck.js
     MIT License
 */
+
 (function (global) {
-  var ZuckJS = (function () {
+  var ZuckJS = function () {
     var w = global;
 
-    var ZuckJS = function ZuckJS (timeline, options) {
+    var ZuckJS = function ZuckJS(timeline, options) {
       var d = document;
       var zuck = this;
 
@@ -17,11 +109,11 @@
         timeline = d.getElementById(timeline);
       }
 
-      var query = function query (qs) {
+      var query = function query(qs) {
         return d.querySelectorAll(qs)[0];
       };
 
-      var get = function get (array, what) {
+      var get = function get(array, what) {
         if (array) {
           return array[what] || '';
         } else {
@@ -29,7 +121,7 @@
         }
       };
 
-      var each = function each (arr, func) {
+      var each = function each(arr, func) {
         if (arr) {
           var total = arr.length;
 
@@ -39,32 +131,32 @@
         }
       };
 
-      var setVendorVariable = function setVendorVariable (ref, variable, value) {
+      var setVendorVariable = function setVendorVariable(ref, variable, value) {
         var variables = [variable.toLowerCase(), 'webkit'.concat(variable), 'MS'.concat(variable), 'o'.concat(variable)];
         each(variables, function (i, val) {
           ref[val] = value;
         });
       };
 
-      var addVendorEvents = function addVendorEvents (el, func, event) {
+      var addVendorEvents = function addVendorEvents(el, func, event) {
         var events = [event.toLowerCase(), 'webkit'.concat(event), 'MS'.concat(event), 'o'.concat(event)];
         each(events, function (i, val) {
           el.addEventListener(val, func, false);
         });
       };
 
-      var onAnimationEnd = function onAnimationEnd (el, func) {
+      var onAnimationEnd = function onAnimationEnd(el, func) {
         addVendorEvents(el, func, 'AnimationEnd');
       };
 
-      var onTransitionEnd = function onTransitionEnd (el, func) {
+      var onTransitionEnd = function onTransitionEnd(el, func) {
         if (!el.transitionEndEvent) {
           el.transitionEndEvent = true;
           addVendorEvents(el, func, 'TransitionEnd');
         }
       };
 
-      var prepend = function prepend (parent, child) {
+      var prepend = function prepend(parent, child) {
         if (parent.firstChild) {
           parent.insertBefore(child, parent.firstChild);
         } else {
@@ -72,7 +164,7 @@
         }
       };
 
-      var fullScreen = function fullScreen (elem, cancel) {
+      var fullScreen = function fullScreen(elem, cancel) {
         var func = 'RequestFullScreen';
         var elFunc = 'requestFullScreen'; // crappy vendor prefixes.
 
@@ -103,7 +195,7 @@
         }
       };
 
-      var translate = function translate (element, to, duration, ease) {
+      var translate = function translate(element, to, duration, ease) {
         var direction = to > 0 ? 1 : -1;
         var to3d = Math.abs(to) / query('#zuck-modal').offsetWidth * 90 * direction;
 
@@ -125,7 +217,7 @@
         }
       };
 
-      var findPos = function findPos (obj, offsetY, offsetX, stop) {
+      var findPos = function findPos(obj, offsetY, offsetX, stop) {
         var curleft = 0;
         var curtop = 0;
 
@@ -153,19 +245,19 @@
         return [curleft, curtop];
       };
 
-      var timeAgo = function timeAgo (time) {
+      var timeAgo = function timeAgo(time) {
         time = Number(time) * 1000;
         var dateObj = new Date(time);
         var dateStr = dateObj.getTime();
         var seconds = (new Date().getTime() - dateStr) / 1000;
         var language = option('language', 'time');
         var formats = [[60, ' '.concat(language.seconds), 1], // 60
-          [120, '1 '.concat(language.minute), ''], // 60*2
-          [3600, ' '.concat(language.minutes), 60], // 60*60, 60
-          [7200, '1 '.concat(language.hour), ''], // 60*60*2
-          [86400, ' '.concat(language.hours), 3600], // 60*60*24, 60*60
-          [172800, ' '.concat(language.yesterday), ''], // 60*60*24*2
-          [604800, ' '.concat(language.days), 86400]];
+        [120, '1 '.concat(language.minute), ''], // 60*2
+        [3600, ' '.concat(language.minutes), 60], // 60*60, 60
+        [7200, '1 '.concat(language.hour), ''], // 60*60*2
+        [86400, ' '.concat(language.hours), 3600], // 60*60*24, 60*60
+        [172800, ' '.concat(language.yesterday), ''], // 60*60*24*2
+        [604800, ' '.concat(language.days), 86400]];
         var currentFormat = 1;
 
         if (seconds < 0) {
@@ -193,6 +285,7 @@
       };
       /* options */
 
+
       var id = timeline.id;
       var optionsDefault = {
         skin: 'snapgram',
@@ -207,23 +300,23 @@
         list: false,
         localStorage: true,
         callbacks: {
-          onRender: function onRender (item, mediaHtml) {
+          onRender: function onRender(item, mediaHtml) {
             return mediaHtml;
           },
-          onOpen: function onOpen (storyId, callback) {
+          onOpen: function onOpen(storyId, callback) {
             callback();
           },
-          onView: function onView (storyId) {},
-          onEnd: function onEnd (storyId, callback) {
+          onView: function onView(storyId) {},
+          onEnd: function onEnd(storyId, callback) {
             callback();
           },
-          onClose: function onClose (storyId, callback) {
+          onClose: function onClose(storyId, callback) {
             callback();
           },
-          onNextItem: function onNextItem (storyId, nextStoryId, callback) {
+          onNextItem: function onNextItem(storyId, nextStoryId, callback) {
             callback();
           },
-          onNavigateItem: function onNavigateItem (storyId, nextStoryId, callback) {
+          onNavigateItem: function onNavigateItem(storyId, nextStoryId, callback) {
             callback();
           }
         },
@@ -246,8 +339,8 @@
         }
       };
 
-      var option = function option (name, prop) {
-        var type = function type (what) {
+      var option = function option(name, prop) {
+        var type = function type(what) {
           return typeof what !== 'undefined';
         };
 
@@ -263,7 +356,8 @@
       };
       /* modal */
 
-      var ZuckModal = function ZuckModal () {
+
+      var ZuckModal = function ZuckModal() {
         var modalZuckContainer = query('#zuck-modal');
 
         if (!modalZuckContainer && !w.Zuck.hasModal) {
@@ -303,12 +397,11 @@
             }
           });
           d.body.appendChild(modalZuckContainer);
-
         }
 
         var modalContent = query('#zuck-modal-content');
 
-        var moveStoryItem = function moveStoryItem (direction) {
+        var moveStoryItem = function moveStoryItem(direction) {
           var modalContainer = query('#zuck-modal');
           var target = '';
           var useless = '';
@@ -349,9 +442,7 @@
           setTimeout(function () {
             if (target !== '' && slideItems[target] && useless !== '') {
               var currentStory = slideItems[target].getAttribute('data-story-id');
-              zuck.internalData.currentStory = currentStory;
-              // var oldStory = query('#zuck-modal .story-viewer.'.concat(useless));
-
+              zuck.internalData.currentStory = currentStory; // var oldStory = query('#zuck-modal .story-viewer.'.concat(useless));
               // if (oldStory) {
               //   oldStory.parentNode.removeChild(oldStory);
               // }
@@ -395,12 +486,13 @@
 
               option('callbacks', 'onView')(zuck.internalData.currentStory);
             }
+
             zuck.changedHook();
-/*            zuck.resizeContainer();*/
+            /*            zuck.resizeContainer();*/
           }, transitionTime + 50);
         };
 
-        var createStoryViewer = function createStoryViewer (storyData, className, forcePlay) {
+        var createStoryViewer = function createStoryViewer(storyData, className, forcePlay) {
           var modalSlider = query('#zuck-modal-slider-'.concat(id));
           var htmlItems = '';
           var pointerItems = '';
@@ -416,7 +508,6 @@
           }
 
           slides.className = 'slides';
-
           each(get(storyData, 'items'), function (i, item) {
             if (currentItem > i) {
               storyData.items[i].seen = true;
@@ -436,8 +527,8 @@
             }
 
             pointerItems += '<span '.concat(commonAttrs, ' class="').concat(currentItem === i ? 'active' : '', ' ').concat(seenClass, '"><b style="animation-duration:').concat(length === '' ? '3' : length, 's"></b></span>');
-
             htmlItems += '<div data-time="' + get(item, 'time') + '" data-type="' + get(item, 'type') + '"' + commonAttrs + ' class="item ' + seenClass;
+
             if (currentItem === i) {
               htmlItems += ' active';
             }
@@ -462,15 +553,17 @@
               } else {
                 render += linkText;
               }
+
               render += '</div></div>';
             }
+
             render += '<div class="ym-story-footer-alt"></div></div></div></div></div>';
             htmlItems += renderCallback(item, render);
           });
           slides.innerHTML = htmlItems;
           var video = slides.querySelector('video');
 
-          var addMuted = function addMuted (video) {
+          var addMuted = function addMuted(video) {
             if (video.muted) {
               storyViewer.classList.add('muted');
             } else {
@@ -506,22 +599,19 @@
           var storyViewer = d.createElement('div');
           storyViewer.className = 'story-viewer muted '.concat(className, ' ').concat(!forcePlay ? 'stopped' : '', ' ').concat(option('backButton') ? 'with-back-button' : '');
           storyViewer.setAttribute('data-story-id', storyId);
-
           var html = '<div class="head"><div class="left">'.concat(option('backButton') ? '<a class="back">&lsaquo;</a>' : '', '<div class="img" style="background-image:url(').concat(get(storyData, 'photo'), ');"></div><div><strong>').concat(get(storyData, 'name'), '</strong><span class="time">').concat(currentItemTime, '</span></div></div><div class="right"><span class="time">').concat(currentItemTime, '</span><span class="loading"></span><a class="close" tabIndex="2">&times;</a></div></div><div class="ym-story-cont"><div class="slides-pointers"><div class="ym-add-cont">').concat(pointerItems, '</div><div class="ym-story-top"><div class="ym-story-left"><div><a class="back">‹</a></div><div class="ym-story-avatar" style="background:url(' + get(storyData, 'photo') + ')"></div><div class="ym-story-info"><div>' + get(storyData, 'name') + '</div><div>' + currentItemTime + '</div></div></div><div class="ym-story-right"><button class="ym-story-button"><i class="fas fa-pause ya-pp"></i></button><button class="ym-story-button"><i class="fas fa-volume-mute ya-mute"></i></button><button class="ym-story-button" data-id="' + storyId + '"><i class="fas fa-share-alt ya-share"></i></button></div></div></div></div></div>');
 
-          var showError = function (msg) {
+          var showError = function showError(msg) {
             if (showingError) {
               return false;
             }
 
             showingError = true;
-
             var error = d.createElement('div');
             error.className = 'ym-story-error';
             error.innerHTML = msg;
             error.style.cssText = 'display:block;';
             storyViewer.appendChild(error);
-
             setTimeout(function () {
               storyViewer.removeChild(error);
               showingError = false;
@@ -534,17 +624,14 @@
               e.preventDefault();
               modal.close();
             };
-          });
-
-          // document.querySelector('.ya-pp')
+          }); // document.querySelector('.ya-pp')
 
           each(storyViewer.querySelectorAll('.ym-story-button'), function (index, value) {
             value.addEventListener('click', function (e) {
               e.preventDefault();
-
-              let action = '';
-              const iconEl = this.children[0];
-              const iconEls = document.querySelectorAll('#zuck-modal-slider-ym-stories .story-viewer .ym-story-button .ya-mute');
+              var action = '';
+              var iconEl = this.children[0];
+              var iconEls = document.querySelectorAll('#zuck-modal-slider-ym-stories .story-viewer .ym-story-button .ya-mute');
 
               if (iconEl.classList.contains('ya-pp')) {
                 action = 'pp';
@@ -553,7 +640,9 @@
               } else if (iconEl.classList.contains('ya-share')) {
                 action = 'sh';
               }
+
               var video = zuck.internalData.currentVideoElement;
+
               if (action === 'pp') {
                 if (video) {
                   // var cur = zuck.internalData.currentVideoElement;
@@ -603,10 +692,11 @@
                     title: 'Hikayeyi Paylaş',
                     text: 'Hikayeyi Paylaş',
                     url: 'https://www.yesilmarka.com/#story=' + value.getAttribute('data-id')
-                  }).then()
-                    .catch((error) => console.log('Error sharing', error));
+                  }).then().catch(function (error) {
+                    return console.log('Error sharing', error);
+                  });
                 } else {
-                  const prEl = document.createElement('textarea');
+                  var prEl = document.createElement('textarea');
                   prEl.value = 'https://www.yesilmarka.com/#story=' + value.getAttribute('data-id');
                   prEl.setAttribute('readonly', '');
                   prEl.style.position = 'absolute';
@@ -620,7 +710,6 @@
               }
             });
           });
-
           storyViewer.appendChild(slides);
 
           if (className === 'viewing') {
@@ -640,7 +729,7 @@
           }
         };
 
-        var createStoryTouchEvents = function createStoryTouchEvents (modalSliderElement) {
+        var createStoryTouchEvents = function createStoryTouchEvents(modalSliderElement) {
           var modalContainer = query('#zuck-modal');
           var enableMouseEvents = true;
           var modalSlider = modalSliderElement;
@@ -650,7 +739,6 @@
           var delta = void 0;
           var timer = void 0;
           var nextTimer = void 0;
-
           each(document.querySelectorAll('.ym-story-footer'), function (index, value) {
             value.addEventListener('mousemove', function (e) {
               scrollUp(e, value.getAttribute('data-url'));
@@ -658,7 +746,6 @@
             value.addEventListener('touchmove', function (e) {
               scrollUp(e, value.getAttribute('data-url'));
             });
-
             value.addEventListener('mouseup', function (e) {
               value.removeEventListener('mousemove', scrollUp);
             });
@@ -666,30 +753,26 @@
               value.removeEventListener('touchmove', scrollUp);
             });
           });
-
           each(document.querySelectorAll('.ym-story-footer .tip.link'), function (index, value) {
             value.addEventListener('click', function (e) {
               clickUrl(e, value.getAttribute('data-url'));
             });
-
             value.addEventListener('touchstart', function (e) {
               clickUrl(e, value.getAttribute('data-url'));
             });
-
             value.addEventListener('mouseup', function (e) {
               value.removeEventListener('mouseup', clickUrl);
             });
-
             value.addEventListener('touchend', function (e) {
               value.removeEventListener('mouseup', clickUrl);
             });
           });
 
-          var clickUrl = function clickUrl (event, url) {
+          var clickUrl = function clickUrl(event, url) {
             location.href = url;
           };
 
-          var touchStart = function touchStart (event) {
+          var touchStart = function touchStart(event) {
             var storyViewer = query('#zuck-modal .viewing');
 
             if (event.type === 'mousedown' && event.which !== 1) {
@@ -742,7 +825,7 @@
             }, 250);
           };
 
-          var touchMove = function touchMove (event) {
+          var touchMove = function touchMove(event) {
             var touches = event.touches ? event.touches[0] : event;
             var pageX = touches.pageX;
             var pageY = touches.pageY;
@@ -764,7 +847,7 @@
             }
           };
 
-          var scrollUp = function scrollUp (event, url) {
+          var scrollUp = function scrollUp(event, url) {
             var touches = event.touches ? event.touches[0] : event;
             var pageX = touches.pageX;
             var pageY = touches.pageY;
@@ -777,6 +860,7 @@
 
               if (touchOffset) {
                 event.preventDefault();
+
                 if (delta.y < -50) {
                   location.href = url;
                 }
@@ -784,7 +868,7 @@
             }
           };
 
-          var scrollDown = function scrollDown (event) {
+          var scrollDown = function scrollDown(event) {
             var touches = event.touches ? event.touches[0] : event;
             var pageX = touches.pageX;
             var pageY = touches.pageY;
@@ -797,6 +881,7 @@
 
               if (touchOffset) {
                 event.preventDefault();
+
                 if (delta.y > 120) {
                   modal.close();
                 }
@@ -804,7 +889,7 @@
             }
           };
 
-          var touchEnd = function touchEnd (event) {
+          var touchEnd = function touchEnd(event) {
             var storyViewer = query('#zuck-modal .viewing');
             var lastTouchOffset = touchOffset;
 
@@ -833,9 +918,8 @@
 
               modalSlider.removeEventListener('touchmove', touchMove);
               modalSlider.removeEventListener('touchend', touchEnd);
-            }
+            } // var video = zuck.internalData.currentVideoElement;
 
-            // var video = zuck.internalData.currentVideoElement;
 
             if (timer) {
               clearInterval(timer);
@@ -848,19 +932,18 @@
             storyViewer.classList.remove('longPress');
             storyViewer.classList.remove('paused');
             zuck.changedHook();
+
             if (nextTimer) {
               clearInterval(nextTimer);
               nextTimer = false;
 
-              var navigateItem = function navigateItem () {
+              var navigateItem = function navigateItem() {
                 if (lastTouchOffset.x > global.screen.width / 2 || !option('previousTap')) {
                   zuck.navigateItem('next', event);
                 } else {
                   zuck.navigateItem('previous', event);
                 }
-              };
-
-              // var storyViewerViewing = query('#zuck-modal .viewing');
+              }; // var storyViewerViewing = query('#zuck-modal .viewing');
               //
               // if (storyViewerViewing && video) {
               //   if (storyViewerViewing.classList.contains('muted')) {
@@ -872,15 +955,15 @@
               //   navigateItem();
               //   return false;
               // }
-              navigateItem();
 
+
+              navigateItem();
               return false;
             }
           };
 
           modalSlider.addEventListener('mousemove', scrollDown);
           modalSlider.addEventListener('touchmove', scrollDown);
-
           modalSlider.addEventListener('touchstart', touchStart);
 
           if (enableMouseEvents) {
@@ -889,16 +972,15 @@
         };
 
         return {
-          show: function show (storyId, page) {
+          show: function show(storyId, page) {
             var modalContainer = query('#zuck-modal');
             document.body.classList.add('ym-story-active');
 
-            var callback = function callback () {
+            var callback = function callback() {
               modalContent.innerHTML = '<div id="zuck-modal-slider-'.concat(id, '" class="slider"></div>');
               var storyData = zuck.data[storyId];
               var currentItem = storyData.currentItem || 0;
               var modalSlider = query('#zuck-modal-slider-'.concat(id));
-
               zuck.internalData.currentStory = storyId;
               storyData.currentItem = currentItem;
 
@@ -923,7 +1005,7 @@
                 modalContainer.classList.add('fullscreen');
               }
 
-              var tryFullScreen = function tryFullScreen () {
+              var tryFullScreen = function tryFullScreen() {
                 if (modalContainer.classList.contains('fullscreen') && option('autoFullScreen') && global.screen.width <= 1024) {
                   fullScreen(modalContainer);
                 }
@@ -950,16 +1032,17 @@
                 tryFullScreen();
               }
 
-              option('callbacks', 'onView')(storyId);
-              // todo en baştan alındı, bu nedenle inceleyeceğiz sorun halidne geri alalım --- var modalSlider = query('#zuck-modal-slider-'.concat(id)); hemen sonra
+              option('callbacks', 'onView')(storyId); // todo en baştan alındı, bu nedenle inceleyeceğiz sorun halidne geri alalım --- var modalSlider = query('#zuck-modal-slider-'.concat(id)); hemen sonra
+
               createStoryTouchEvents(modalSlider);
               zuck.changedHook();
               /*zuck.resizeContainer();*/
             };
+
             option('callbacks', 'onOpen')(storyId, callback);
           },
-          next: function next (unmute) {
-            var callback = function callback () {
+          next: function next(unmute) {
+            var callback = function callback() {
               var lastStory = zuck.internalData.currentStory;
               var lastStoryTimelineElement = query('#'.concat(id, ' [data-id="').concat(lastStory, '"]'));
 
@@ -982,11 +1065,11 @@
 
             option('callbacks', 'onEnd')(zuck.internalData.currentStory, callback);
           },
-          close: function close () {
+          close: function close() {
             var modalContainer = query('#zuck-modal');
             document.body.classList.remove('ym-story-active');
 
-            var callback = function callback () {
+            var callback = function callback() {
               if (option('backNative')) {
                 global.location.hash = '';
               }
@@ -1009,7 +1092,7 @@
       var modal = new ZuckModal();
       /* parse functions */
 
-      var parseItems = function parseItems (story) {
+      var parseItems = function parseItems(story) {
         var storyId = story.getAttribute('data-id');
         var storyItems = d.querySelectorAll('#'.concat(id, ' [data-id="').concat(storyId, '"] .items > li'));
         var items = [];
@@ -1017,7 +1100,6 @@
           var firstElementChild = _ref2.firstElementChild;
           var a = firstElementChild;
           var img = a.firstElementChild;
-
           items.push({
             src: a.getAttribute('href'),
             length: a.getAttribute('data-length'),
@@ -1033,7 +1115,7 @@
         zuck.data[storyId].items = items;
       };
 
-      var parseStory = function parseStory (story) {
+      var parseStory = function parseStory(story) {
         var storyId = story.getAttribute('data-id');
         var seen = false;
 
@@ -1071,7 +1153,7 @@
         };
       };
 
-      var getStoryMorningGlory = function getStoryMorningGlory (what) {
+      var getStoryMorningGlory = function getStoryMorningGlory(what) {
         // my wife told me to stop singing Wonderwall. I SAID MAYBE.
         var currentStory = zuck.internalData.currentStory;
         var whatElementYouMean = ''.concat(what, 'ElementSibling');
@@ -1089,7 +1171,7 @@
         return false;
       };
 
-      var updateStoryseenPosition = function updateStoryseenPosition () {
+      var updateStoryseenPosition = function updateStoryseenPosition() {
         each(d.querySelectorAll('#'.concat(id, ' .story.seen')), function (i, el) {
           var newData = zuck.data[el.getAttribute('data-id')];
           var timeline = el.parentNode;
@@ -1098,7 +1180,8 @@
         });
       };
 
-      var playVideoItem = function playVideoItem (elements, unmute, restart = true) {
+      var playVideoItem = function playVideoItem(elements, unmute) {
+        var restart = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
         var itemElement = elements[1];
         var itemPointer = elements[0];
         var storyViewer = itemPointer.parentNode.parentNode.parentNode.parentNode;
@@ -1121,7 +1204,7 @@
             return false;
           }
 
-          var setDuration = function setDuration () {
+          var setDuration = function setDuration() {
             if (video.duration) {
               setVendorVariable(itemPointer.getElementsByTagName('b')[0].style, 'AnimationDuration', ''.concat(video.duration, 's'));
             }
@@ -1130,27 +1213,24 @@
           setDuration();
           video.addEventListener('loadedmetadata', setDuration);
           zuck.internalData.currentVideoElement = video;
-
-          const played = video.play();
+          var played = video.play();
 
           if (played !== undefined) {
-            played.then(() => {
+            played.then(function () {
               if (restart === true) {
                 video.currentTime = 0;
               }
-            }).catch(error => {
-            });
-          }
-
-          // if (unmute.target) {
+            }).catch(function (error) {});
+          } // if (unmute.target) {
           //   unmuteVideoItem(video, storyViewer);
           // }
+
         } else {
           zuck.internalData.currentVideoElement = false;
         }
       };
 
-      var pauseVideoItem = function pauseVideoItem () {
+      var pauseVideoItem = function pauseVideoItem() {
         var video = zuck.internalData.currentVideoElement;
 
         if (video) {
@@ -1160,7 +1240,7 @@
         }
       };
 
-      var unmuteVideoItem = function unmuteVideoItem (video, storyViewer) {
+      var unmuteVideoItem = function unmuteVideoItem(video, storyViewer) {
         video.muted = false;
         video.volume = 1.0;
         video.removeAttribute('muted');
@@ -1177,7 +1257,8 @@
       };
       /* data functions */
 
-      var saveLocalData = function saveLocalData (key, data) {
+
+      var saveLocalData = function saveLocalData(key, data) {
         try {
           if (option('localStorage')) {
             var keyName = 'zuck-'.concat(id, '-').concat(key);
@@ -1186,7 +1267,7 @@
         } catch (e) {}
       };
 
-      var getLocalData = function getLocalData (key) {
+      var getLocalData = function getLocalData(key) {
         if (option('localStorage')) {
           var keyName = 'zuck-'.concat(id, '-').concat(key);
           return global.localStorage[keyName] ? JSON.parse(global.localStorage[keyName]) : false;
@@ -1195,6 +1276,7 @@
         }
       };
       /* api */
+
 
       zuck.data = {};
       zuck.internalData = {};
@@ -1223,7 +1305,6 @@
         story.setAttribute('data-id', storyId);
         story.setAttribute('data-photo', get(data, 'photo'));
         story.setAttribute('data-last-updated', get(data, 'lastUpdated'));
-
         var preview = false;
 
         if (items[0]) {
@@ -1268,7 +1349,6 @@
         li.innerHTML = '<a href="'.concat(get(data, 'src'), '" data-link="').concat(get(data, 'link'), '" data-linkText="').concat(get(data, 'linkText'), '" data-time="').concat(get(data, 'time'), '" data-type="').concat(get(data, 'type'), '" data-length="').concat(get(data, 'length'), '" data-storyText="').concat(get(data, 'storyText'), '" data-storyTextClass="').concat(get(data, 'storyTextClass'), '"><img src="').concat(get(data, 'preview'), '"></a>');
         var el = story.querySelectorAll('.items')[0];
 
-
         if (append) {
           el.appendChild(li);
         } else {
@@ -1284,11 +1364,12 @@
       };
 
       zuck.changedHook = function () {
-        const storyViewer = document.querySelector('.story-viewer.viewing');
-        const pp = document.querySelector('.story-viewer.viewing .ya-pp');
-        const mu = document.querySelector('.story-viewer.viewing .ya-mute');
-        const video = zuck.internalData.currentVideoElement;
-        const muted = getLocalData('muted');
+        var storyViewer = document.querySelector('.story-viewer.viewing');
+        var pp = document.querySelector('.story-viewer.viewing .ya-pp');
+        var mu = document.querySelector('.story-viewer.viewing .ya-mute');
+        var video = zuck.internalData.currentVideoElement;
+        var muted = getLocalData('muted');
+
         if (pp === null) {
           return false;
         }
@@ -1312,11 +1393,9 @@
           video.addEventListener('playing', function () {
             storyViewer.classList.remove('paused');
           });
-
           video.addEventListener('waiting', function () {
             storyViewer.classList.add('paused');
           });
-
         } else {
           mu.classList.remove('fa-volume-up');
           mu.classList.add('fa-volume-mute');
@@ -1325,21 +1404,20 @@
       };
 
       zuck.resizeContainer = function () {
-        const tt = document.querySelector('.story-viewer.viewing .item.active .media');
-
+        var tt = document.querySelector('.story-viewer.viewing .item.active .media');
         each(document.querySelectorAll('.ym-story-cont'), function (index, value) {
           value.style.width = '696px';
         });
-
-        const resizeOb = new ResizeObserver(function (entries) {
+        var resizeOb = new ResizeObserver(function (entries) {
           // since we are observing only a single element, so we access the first element in entries array
-          const rect = entries[0].contentRect;
-          let width = 0;
+          var rect = entries[0].contentRect;
+          var width = 0;
 
           if (entries[0].target === document.body) {
             if (document.querySelector('.story-viewer.viewing .item.active .media') === null) {
               return false;
             }
+
             width = document.querySelector('.story-viewer.viewing .item.active .media').offsetWidth;
           } else {
             // current width & height
@@ -1353,19 +1431,17 @@
           each(document.querySelectorAll('.story-viewer .ym-story-cont'), function (index, value) {
             value.style.width = width + 'px';
           });
-
           each(document.querySelectorAll('.story-viewer .item .ym-sthc-1'), function (index, value) {
             value.style.width = width + 'px';
           });
         });
-
         resizeOb.observe(tt);
         resizeOb.observe(document.body);
       };
 
       zuck.showStory = function () {
-        let url = new URL(window.location.href);
-        let arr = url.hash.split('=');
+        var url = new URL(window.location.href);
+        var arr = url.hash.split('=');
 
         if (zuck.data[arr[1]] === undefined) {
           history.replaceState(null, null, ' ');
@@ -1398,7 +1474,7 @@
         var nextItem = nextItems[1];
 
         if (storyViewer && nextPointer && nextItem) {
-          var navigateItemCallback = function navigateItemCallback () {
+          var navigateItemCallback = function navigateItemCallback() {
             if (direction === 'previous') {
               currentPointer.classList.remove('seen');
               currentItemElement.classList.remove('seen');
@@ -1413,15 +1489,13 @@
             nextPointer.classList.add('active');
             nextItem.classList.remove('seen');
             nextItem.classList.add('active');
-
             each(storyViewer.querySelectorAll('.time'), function (i, el) {
               el.innerText = timeAgo(nextItem.getAttribute('data-time'));
             });
             zuck.data[currentStory].currentItem = zuck.data[currentStory].currentItem + directionNumber;
-
             playVideoItem(nextItems, event);
             zuck.changedHook();
-/*            zuck.resizeContainer();*/
+            /*            zuck.resizeContainer();*/
           };
 
           var callback = option('callbacks', 'onNavigateItem');
@@ -1434,7 +1508,7 @@
         }
       };
 
-      var init = function init () {
+      var init = function init() {
         if (query('#'.concat(id, ' .story'))) {
           each(timeline.querySelectorAll('.story'), function (i, story) {
             parseStory(story, true);
@@ -1468,6 +1542,7 @@
     };
     /* Helpers */
 
+
     ZuckJS.buildItem = function (id, type, length, src, preview, link, linkText, seen, time) {
       return {
         id: id,
@@ -1483,22 +1558,19 @@
     };
     /* Too much zuck zuck to maintain legacy */
 
+
     w.ZuckitaDaGalera = w.Zuck = ZuckJS;
     return ZuckJS;
-  }()); // AMD support
+  }(); // AMD support
 
-  if (typeof define === 'function' && define.amd) {
-    define(function () {
+
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
       return ZuckJS;
-    }); // CommonJS and Node.js module support.
-  } else if (typeof exports !== 'undefined') {
-    // Support Node.js specific `module.exports` (which can be a function)
-    if (typeof module !== 'undefined' && module.exports) {
-      exports = module.exports = ZuckJS;
-    } // But always support CommonJS module 1.1.1 spec (`exports` cannot be a function)
-
-    exports.ZuckJS = ZuckJS;
-  } else {
-    global.ZuckJS = ZuckJS;
-  }
+    }).call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)); // CommonJS and Node.js module support.
+  } else {}
 })(window);
+
+/***/ })
+/******/ ]);
